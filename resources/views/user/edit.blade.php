@@ -73,6 +73,9 @@
         </div>
 
 
+            <x-form-input id="demo-01" label="Input Contoh" name="demo-01" type="email" ></x-form-input>
+            <x-form-input id="demo-02" label="Masukkan Umur" name="demo-02" type="number" ></x-form-input>
+
             <x-primary-button class="mt-4">
                 {{ __('Update') }}
             </x-primary-button>
