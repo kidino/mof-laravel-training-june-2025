@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::paginate(10); // Assuming you have a User model
+        $users = User::with('roles')->paginate(10); // Assuming you have a User model
 
         // return view('user.index', [
         //     'users' => $users,
@@ -58,7 +59,9 @@ class UserController extends Controller
 
         // dd($user);
 
-        return view('user.edit', compact('user'));
+        $roles = Role::all();
+
+        return view('user.edit', compact('user','roles'));
     }
 
     /**
