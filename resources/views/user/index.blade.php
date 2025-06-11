@@ -11,8 +11,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <div class="mb-4">
-                    {{ $users->links() }}
+                    <div class="flex justify-between items-center mb-4">
+                        <div>
+                            {{ $users->links() }}
+                        </div>
+                        <a href="{{ route('user.create') }}" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                            + Add New User
+                        </a>
                     </div>
                     
                     <table class="w-full divide-y divide-gray-200">
