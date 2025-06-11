@@ -78,6 +78,15 @@ class UserController extends Controller
 
         $user->save();
 
+        // Sync roles
+        if ($request->has('roles')) {
+            // $user->roles()->sync([1,2,3]);
+            $user->roles()->sync($request->roles);
+        } else {
+            // $user->roles()->sync([]);
+            $user->roles()->detach();
+        }
+
         return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 

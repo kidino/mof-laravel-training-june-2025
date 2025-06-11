@@ -16,6 +16,9 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+            @if(Auth::user()->hasRole('Admin'))
+
+
                     <x-nav-link :href="route('user.index')" 
                         :active="request()->routeIs('user*')">
                         {{ __('Users') }}
@@ -25,7 +28,8 @@
                         :active="request()->routeIs('role*')">
                         {{ __('Roles') }}
                     </x-nav-link>
-
+                    
+            @endif 
 
 
 
@@ -86,16 +90,19 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('user.index')" 
-            :active="request()->routeIs('user*')">
-                {{ __('Users') }}
-            </x-responsive-nav-link>
-            
-            <x-responsive-nav-link :href="route('role.index')" 
-            :active="request()->routeIs('role*')">
-                {{ __('Roles') }}
-            </x-responsive-nav-link>
-            
+            @if(Auth::user()->hasRole('Admin'))
+
+                <x-responsive-nav-link :href="route('user.index')" 
+                :active="request()->routeIs('user*')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+                
+                <x-responsive-nav-link :href="route('role.index')" 
+                :active="request()->routeIs('role*')">
+                    {{ __('Roles') }}
+                </x-responsive-nav-link>
+                 
+            @endif 
 
         </div>
 

@@ -88,8 +88,11 @@
                     </div>
 
                 @endforeach
+                <x-input-error :messages="$errors->get('roles')" class="mt-2" />
 
             </div>
+
+
 
 
 
