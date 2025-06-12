@@ -12,8 +12,13 @@ class NoteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $user_id = $request->user()->id;
+
+        // $notes = Note::where('user_id', $user_id)->with('user')->paginate(10); 
+        
         $notes = Note::with('user')->paginate(10); 
 
         return view('note.index', compact('notes'));

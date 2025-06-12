@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Scopes\UserNoteScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Note extends Model
 {
@@ -15,6 +16,11 @@ class Note extends Model
         'content',
         'user_id',
     ];
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new UserNoteScope);
+    }
 
     public function user()
     {
