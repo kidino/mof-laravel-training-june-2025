@@ -16,8 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-            @if(Auth::user()->hasRole('Admin'))
+                    <x-nav-link :href="route('note.index')" 
+                        :active="request()->routeIs('note*')">
+                        {{ __('My Notes') }}
+                    </x-nav-link>
 
+
+            @if(Auth::user()->hasRole('Admin'))
 
                     <x-nav-link :href="route('user.index')" 
                         :active="request()->routeIs('user*')">
@@ -28,7 +33,7 @@
                         :active="request()->routeIs('role*')">
                         {{ __('Roles') }}
                     </x-nav-link>
-                    
+
             @endif 
 
 
@@ -89,6 +94,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('note.index')" 
+                :active="request()->routeIs('note*')">
+                    {{ __('My Notes') }}
+                </x-responsive-nav-link>            
 
             @if(Auth::user()->hasRole('Admin'))
 
